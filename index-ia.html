@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Invitation_Mariage</title>
+<link rel="stylesheet" href="style-ia.css" />
+<link rel="icon" type="image/png" href="images/Harak-logo.png">
+
+<!-- Fontawesome pour icônes -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<!-- jsPDF + html2canvas (export PDF) et QRCode & confetti -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+</head>
+<body>
+
+<header>
+    <p class="bienvenue">Bienvenu(e)!</p>
+    <p class="msg">Au mariage de</p>
+  <h1>Richman &amp; Charlène</h1>
+  <div class="subtitle small-muted">20 / 12 / 2025</div>
+</header>
+
+<div class="photo-frame">
+    <img src="images/nous.JPG" alt="Les mariés">
+</div>
+
+
+<div class="festons"></div>
+
+<div class="container">
+  <div class="main-col">
+
+    <div class="card">
+      <div class="stats-global">
+        <div>Totaux : <span class="numbers" id="stat-total">0</span></div>
+        <div>Présents : <span class="numbers" id="stat-present">0</span></div>
+        <div>Absents : <span class="numbers" id="stat-absent">0</span></div>
+
+        <div style="margin-left:auto; display:flex; gap:8px; align-items:center;">
+          <input id="search" type="search" placeholder="Rechercher un invité..." aria-label="Recherche invité" />
+          <button id="btn-export" title="Exporter en PDF"><i class="fa-solid fa-file-export"></i></button>
+          <button id="btn-admin" title="Mode admin"><i class="fa-solid fa-user-shield"></i></button>
+        </div>
+      </div>
+
+      <!-- LISTE DES TABLES -->
+      <div id="tables-root">
+        <!-- Table 1 -->
+        <div class="table-block card" data-table="table1">
+          <div class="table-title">
+            <h3>1 — Table Kinshasa</h3>
+            <div class="table-meta">Présents: <span class="table-present">0</span> / <span class="table-total">5</span> — <span class="table-pct">0%</span></div>
+          </div>
+
+          <div class="guest-list">
+            <div class="guest" data-id="t1_richman"><div class="name">Richman</div><div class="meta"><i class="fa-solid fa-circle-check check" title="Valider"></i></div></div>
+            <div class="guest" data-id="t1_mbadu"><div class="name">Mbadu</div><div class="meta"><i class="fa-solid fa-circle-check check" title="Valider"></i></div></div>
+            <div class="guest" data-id="t1_dan"><div class="name">Dan Mpanzu</div><div class="meta"><i class="fa-solid fa-circle-check check" title="Valider"></i></div></div>
+            <div class="guest" data-id="t1_charlene"><div class="name">Charlène</div><div class="meta"><i class="fa-solid fa-circle-check check" title="Valider"></i></div></div>
+            <div class="guest couple" data-id="t1_couple_mbadu"><div class="name">Couple Mbadu</div><div class="meta"><i class="fa-solid fa-circle-check check" title="Valider couple"></i></div></div>
+          </div>
+        </div>
+
+        <!-- Table 2 -->
+        <div class="table-block card" data-table="table2">
+          <div class="table-title">
+            <h3>2 — Table Lumbumbashi</h3>
+            <div class="table-meta">Présents: <span class="table-present">0</span> / <span class="table-total">5</span> — <span class="table-pct">0%</span></div>
+          </div>
+          <div class="guest-list">
+            <div class="guest" data-id="t2_richman"><div class="name">Richman</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t2_dan"><div class="name">Dan Mpanzu</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t2_christian"><div class="name">Christian</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t2_mpanzu"><div class="name">Mpanzu</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest couple" data-id="t2_couple_muaka"><div class="name">Couple Muaka</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+          </div>
+        </div>
+
+        <!-- Table 3 -->
+        <div class="table-block card" data-table="table3">
+          <div class="table-title">
+            <h3>3 — Table Boma</h3>
+            <div class="table-meta">Présents: <span class="table-present">0</span> / <span class="table-total">4</span> — <span class="table-pct">0%</span></div>
+          </div>
+          <div class="guest-list">
+            <div class="guest" data-id="t3_richman"><div class="name">Richman</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t3_dan"><div class="name">Dan Mpanzu</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t3_christian"><div class="name">Christian</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest couple" data-id="t3_couple_ngedi"><div class="name">Couple Ngedi</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+          </div>
+        </div>
+
+        <!-- Table 4 -->
+        <div class="table-block card" data-table="table4">
+          <div class="table-title">
+            <h3>4 — Table Matadi</h3>
+            <div class="table-meta">Présents: <span class="table-present">0</span> / <span class="table-total">4</span> — <span class="table-pct">0%</span></div>
+          </div>
+          <div class="guest-list">
+            <div class="guest" data-id="t4_richman"><div class="name">Richman</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t4_dan"><div class="name">Dan Mpanzu</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t4_christian"><div class="name">Christian</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest couple" data-id="t4_couple_fatshi"><div class="name">Couple Fatshi</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+          </div>
+        </div>
+
+        <!-- Table 5 -->
+        <div class="table-block card" data-table="table5">
+          <div class="table-title">
+            <h3>5 — Table Kisangani</h3>
+            <div class="table-meta">Présents: <span class="table-present">0</span> / <span class="table-total">3</span> — <span class="table-pct">0%</span></div>
+          </div>
+          <div class="guest-list">
+            <div class="guest" data-id="t5_richman"><div class="name">Richman</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t5_dan"><div class="name">Dan Mpanzu</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t5_christian"><div class="name">Christian</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+          </div>
+        </div>
+
+        <!-- Table 6 -->
+        <div class="table-block card" data-table="table6">
+          <div class="table-title">
+            <h3>6 — Table Bandundu</h3>
+            <div class="table-meta">Présents: <span class="table-present">0</span> / <span class="table-total">3</span> — <span class="table-pct">0%</span></div>
+          </div>
+          <div class="guest-list">
+            <div class="guest" data-id="t6_richman"><div class="name">Richman</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t6_dan"><div class="name">Dan Mpanzu</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t6_christian"><div class="name">Christian</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+          </div>
+        </div>
+
+        <!-- Table 7 -->
+        <div class="table-block card" data-table="table7">
+          <div class="table-title">
+            <h3>7 — Table Goma</h3>
+            <div class="table-meta">Présents: <span class="table-present">0</span> / <span class="table-total">3</span> — <span class="table-pct">0%</span></div>
+          </div>
+          <div class="guest-list">
+            <div class="guest" data-id="t7_richman"><div class="name">Richman</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t7_dan"><div class="name">Dan Mpanzu</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t7_christian"><div class="name">Christian</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+          </div>
+        </div>
+
+        <!-- Table 8 -->
+        <div class="table-block card" data-table="table8">
+          <div class="table-title">
+            <h3>8 — Table Bunia</h3>
+            <div class="table-meta">Présents: <span class="table-present">0</span> / <span class="table-total">3</span> — <span class="table-pct">0%</span></div>
+          </div>
+          <div class="guest-list">
+            <div class="guest" data-id="t8_richman"><div class="name">Richman</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t8_dan"><div class="name">Dan Mpanzu</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t8_christian"><div class="name">Christian</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+          </div>
+        </div>
+
+        <!-- Table 9 -->
+        <div class="table-block card" data-table="table9">
+          <div class="table-title">
+            <h3>9 — Table Kananga</h3>
+            <div class="table-meta">Présents: <span class="table-present">0</span> / <span class="table-total">3</span> — <span class="table-pct">0%</span></div>
+          </div>
+          <div class="guest-list">
+            <div class="guest" data-id="t9_richman"><div class="name">Richman</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t9_dan"><div class="name">Dan Mpanzu</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t9_christian"><div class="name">Christian</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+          </div>
+        </div>
+
+        <!-- Table 10 -->
+        <div class="table-block card" data-table="table10">
+          <div class="table-title">
+            <h3>10 — Table Bukavu</h3>
+            <div class="table-meta">Présents: <span class="table-present">0</span> / <span class="table-total">4</span> — <span class="table-pct">0%</span></div>
+          </div>
+          <div class="guest-list">
+            <div class="guest" data-id="t10_richman"><div class="name">Richman</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t10_dan"><div class="name">Dan Mpanzu</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t10_christian"><div class="name">Christian</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t10_rose"><div class="name">Rose</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- right panel -->
+  <aside class="side">
+    <div class="card panel">
+      <div class="panel-row">
+        <div>
+          <div class="small-muted">Admin</div>
+          <div id="admin-status">Mode invité</div>
+        </div>
+        <div>
+          <button id="btn-reset" class="icon-btn" title="Réinitialiser tout (admin)" style="display:none"><i class="fa-solid fa-trash-can"></i></button>
+        </div>
+      </div>
+
+      <div class="panel-row">
+        <div>
+          <div class="small-muted">QR Code (accès rapide)</div>
+          <div id="qrcode"></div>
+        </div>
+      </div>
+
+      <div class="panel-row" style="margin-top:10px;">
+        <div>
+          <div class="small-muted">Options</div>
+          <div style="display:flex; gap:8px; margin-top:6px;">
+            <button id="btn-filter-all" class="icon-btn" title="Tous"><i class="fa-solid fa-list"></i></button>
+            <button id="btn-filter-present" class="icon-btn" title="Présents"><i class="fa-solid fa-circle-check"></i></button>
+            <button id="btn-filter-absent" class="icon-btn" title="Absents"><i class="fa-solid fa-user-xmark"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px;">
+        <div class="small-muted">Aide rapide</div>
+        <ul style="margin-top:6px; padding-left:18px; color:var(--muted)">
+          <li>Cliquer sur une icône pour valider (click once)</li>
+          <li>Mode admin permet d'annuler validations</li>
+          <li>Exporter les stats en PDF</li>
+        </ul>
+      </div>
+
+    </div>
+  </aside>
+</div>
+
+<!-- Confirm modal -->
+<div id="modal" class="modal" role="dialog" aria-modal="true">
+  <div class="box">
+    <div id="modal-text">Annuler la validation ?</div>
+    <div class="actions">
+      <button id="modal-cancel" class="icon-btn">Annuler</button>
+      <button id="modal-confirm" class="icon-btn" style="background:#dc3545">Confirmer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ====== Config ====== */
+const ADMIN_PASSWORD = "HarakaDigital10"; // tel que demandé
+const STORAGE_KEY = "rd_validated_guests_v1";
+
+/* ====== Utilitaires ====== */
+const html2pdfLib = window.jspdf; // jspdf.umd
+
+/* éléments */
+const statTotal = document.getElementById('stat-total');
+const statPresent = document.getElementById('stat-present');
+const statAbsent = document.getElementById('stat-absent');
+const searchInput = document.getElementById('search');
+const btnExport = document.getElementById('btn-export');
+const btnAdmin = document.getElementById('btn-admin');
+const adminStatus = document.getElementById('admin-status');
+const btnReset = document.getElementById('btn-reset');
+const qrcodeContainer = document.getElementById('qrcode');
+const modal = document.getElementById('modal');
+const modalText = document.getElementById('modal-text');
+const modalCancel = document.getElementById('modal-cancel');
+const modalConfirm = document.getElementById('modal-confirm');
+
+let waitingUnvalidateId = null; // id en attente de suppression (confirmation)
+let isAdmin = false;
+
+/* Chargement initial depuis DOM */
+const guestNodes = Array.from(document.querySelectorAll('.guest'));
+const tableBlocks = Array.from(document.querySelectorAll('.table-block'));
+
+/* init storage */
+let validated = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+
+/* Génère un QR code vers la page courante */
+function initQRCode(){
+  qrcodeContainer.innerHTML = "";
+  new QRCode(qrcodeContainer, {
+    text: location.href,
+    width: 120,
+    height: 120,
+    colorDark: "#0f2133",
+    colorLight: "#ffffff00",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+}
+
+/* calcul du total pris en compte (couple = 2) */
+function guestValue(node){
+  return node.classList.contains('couple') ? 2 : 1;
+}
+
+/* Mise à jour des stats globales et par table */
+function updateStatsAndUI(){
+  let total = guestNodes.reduce((s,n)=> s + guestValue(n), 0);
+  let presentCount = 0;
+  // per table
+  tableBlocks.forEach(tb=>{
+    const glist = Array.from(tb.querySelectorAll('.guest'));
+    let presentTable = glist.filter(g=> validated.includes(g.dataset.id)).reduce((s,g)=> s + guestValue(g), 0);
+    let totalTable = glist.reduce((s,g)=> s + guestValue(g), 0);
+    presentCount += presentTable;
+    tb.querySelector('.table-present').textContent = presentTable;
+    tb.querySelector('.table-total').textContent = totalTable;
+    const pct = totalTable === 0 ? 0 : Math.round((presentTable / totalTable) * 100);
+    tb.querySelector('.table-pct').textContent = pct + '%';
+
+    // confetti when 100% and not yet celebrated
+    if(pct === 100 && !tb.dataset.confettiDone){
+      // launch confetti
+      confetti({
+        particleCount: 90,
+        spread: 70,
+        origin: { y: 0.3 }
+      });
+      tb.dataset.confettiDone = "1";
+    }
+  });
+
+  statTotal.textContent = total;
+  statPresent.textContent = presentCount;
+  statAbsent.textContent = total - presentCount;
+
+  // update individual icons state
+  guestNodes.forEach(node=>{
+    const icon = node.querySelector('.check');
+    if(validated.includes(node.dataset.id)){
+      icon.classList.add('validated');
+      icon.setAttribute('title','Validé');
+      icon.style.pointerEvents = 'none';
+    } else {
+      icon.classList.remove('validated');
+      icon.setAttribute('title','Valider');
+      icon.style.pointerEvents = '';
+    }
+  });
+}
+
+/* Toggle admin mode */
+function setAdminMode(on){
+  isAdmin = !!on;
+  adminStatus.textContent = isAdmin ? "Mode Admin (déverrouillé)" : "Mode invité";
+  btnReset.style.display = isAdmin ? "inline-flex" : "none";
+  // in admin mode allow pointer events on validated icons for undo
+  guestNodes.forEach(n=>{
+    const icon = n.querySelector('.check');
+    if(isAdmin && validated.includes(n.dataset.id)){
+      icon.style.pointerEvents = 'auto';
+    } else if(!validated.includes(n.dataset.id)){
+      icon.style.pointerEvents = '';
+    } else {
+      icon.style.pointerEvents = 'none';
+    }
+  });
+}
+
+/* prompt admin password */
+btnAdmin.addEventListener('click', ()=>{
+  const p = prompt("Mot de passe admin :");
+  if(p === ADMIN_PASSWORD){
+    setAdminMode(true);
+    alert("Mode admin activé.");
+  } else {
+    alert("Mot de passe incorrect.");
+  }
+});
+
+/* Export PDF (capture zone principale) */
+btnExport.addEventListener('click', async ()=>{
+  btnExport.disabled = true;
+  btnExport.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
+  // capture the main column (all tables)
+  const mainCol = document.querySelector('.main-col');
+  try{
+    const canvas = await html2canvas(mainCol, {scale:1.5, useCORS:true, backgroundColor: null});
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new html2pdfLib.jsPDF({orientation:'portrait', unit:'px', format:[canvas.width, canvas.height]});
+    pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+    pdf.save('plan_de_table.pdf');
+  }catch(e){
+    console.error(e);
+    alert("Erreur lors de l'export PDF.");
+  }finally{
+    btnExport.disabled = false;
+    btnExport.innerHTML = '<i class="fa-solid fa-file-export"></i>';
+  }
+});
+
+/* Filtrage (All / present / absent) */
+document.getElementById('btn-filter-all').addEventListener('click', ()=> {
+  guestNodes.forEach(g=> g.style.display = '');
+});
+document.getElementById('btn-filter-present').addEventListener('click', ()=> {
+  guestNodes.forEach(g=> g.style.display = validated.includes(g.dataset.id) ? '' : 'none');
+});
+document.getElementById('btn-filter-absent').addEventListener('click', ()=> {
+  guestNodes.forEach(g=> g.style.display = validated.includes(g.dataset.id) ? 'none' : '');
+});
+
+/* Search */
+searchInput.addEventListener('input', (e)=>{
+  const q = e.target.value.trim().toLowerCase();
+  guestNodes.forEach(g=>{
+    const name = g.querySelector('.name').textContent.toLowerCase();
+    g.style.display = name.includes(q) ? '' : 'none';
+  });
+});
+
+/* Click on icon: validate (or in admin: unvalidate after confirm) */
+guestNodes.forEach(g=>{
+  const icon = g.querySelector('.check');
+
+  // add a small click animation
+  icon.addEventListener('click', (ev)=>{
+    ev.stopPropagation();
+    if(validated.includes(g.dataset.id)){
+      // if admin, ask confirmation to unvalidate
+      if(isAdmin){
+        waitingUnvalidateId = g.dataset.id;
+        modalText.textContent = `Annuler la validation pour "${g.querySelector('.name').textContent}" ?`;
+        modal.style.display = 'flex';
+      }
+      return;
+    }
+
+    // animate icon
+    icon.classList.add('validated');
+    // tiny pulse
+    icon.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.15)' }, { transform: 'scale(1)' }], { duration: 280 });
+
+    // add to validated list
+    validated.push(g.dataset.id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(validated));
+    updateStatsAndUI();
+  });
+
+  // clicking the guest row also validates (useful on mobile)
+  g.addEventListener('click', (ev)=>{
+    const iconElem = g.querySelector('.check');
+    iconElem.click();
+  });
+});
+
+/* modal actions for unvalidate */
+modalCancel.addEventListener('click', ()=> {
+  waitingUnvalidateId = null;
+  modal.style.display = 'none';
+});
+modalConfirm.addEventListener('click', ()=> {
+  if(!waitingUnvalidateId) return;
+  // remove from validated
+  validated = validated.filter(id => id !== waitingUnvalidateId);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(validated));
+  waitingUnvalidateId = null;
+  modal.style.display = 'none';
+  updateStatsAndUI();
+});
+
+/* Reset everything (admin) */
+btnReset.addEventListener('click', ()=>{
+  if(!isAdmin) return alert("Active le mode admin d'abord.");
+  if(!confirm("Réinitialiser toutes les validations ? Cette action est irréversible.")) return;
+  validated = [];
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(validated));
+  // reset confetti flags
+  tableBlocks.forEach(tb => delete tb.dataset.confettiDone);
+  updateStatsAndUI();
+});
+
+/* initial setup: set dataset table totals if not set */
+tableBlocks.forEach(tb=>{
+  const total = Array.from(tb.querySelectorAll('.guest')).reduce((s,g)=> s + (g.classList.contains('couple')?2:1), 0);
+  tb.querySelector('.table-total').textContent = total;
+});
+
+/* load validated from storage */
+(function initFromStorage(){
+  validated = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+  // mark confettiDone for any already-complete tables so we don't replay confetti
+  tableBlocks.forEach(tb=>{
+    const total = parseInt(tb.querySelector('.table-total').textContent,10);
+    const present = Array.from(tb.querySelectorAll('.guest')).filter(g=> validated.includes(g.dataset.id)).reduce((s,g)=> s + guestValue(g), 0);
+    if(present === total) tb.dataset.confettiDone = "1";
+  });
+  updateStatsAndUI();
+})();
+
+/* helpers */
+function guestValue(node){ return node.classList.contains('couple') ? 2 : 1; }
+
+/* init QR & layout */
+initQRCode();
+
+/* small keyboard shortcut: 'a' toggles admin prompt (useful) */
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'a') btnAdmin.click();
+});
+</script>
+
+<div class="hearts-bg"></div>
+
+
+</body>
+</html>

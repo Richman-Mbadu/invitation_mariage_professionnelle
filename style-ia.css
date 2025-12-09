@@ -1,0 +1,309 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Audiowide&family=Bebas+Neue&family=Bitcount+Prop+Single:wght@100..900&family=Eater&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Germania+One&family=League+Spartan:wght@100..900&family=Mogra&family=Orbitron:wght@400..900&family=PT+Sans+Narrow:wght@400;700&family=Pacifico&family=Pirata+One&family=Poppins:ital,wght@0,100;0,400;0,700;1,500&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
+
+  :root{
+    --bg: #071229; /* bleu nuit */
+    --card: #0f2133;
+    --accent: #9fb6c8; /* argent clair */
+    --muted: #bfcbd6;
+    --success: #3dd07b;
+    --glass: rgba(255,255,255,0.04);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: linear-gradient(180deg,#04101f 0%, #071229 60%);
+    color: var(--muted);
+    padding:0;
+  }
+   /* body {
+    background: linear-gradient(to bottom, #3B1C54, #2B0F3A);
+    /* color: #F4E3D7; /* Or rosé clair pour le texte */
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    position: relative; */
+/* } */ 
+/* 
+.stars-bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    z-index: -2;
+    background: transparent;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: #FFD7A0;
+    border-radius: 50%;
+    animation: twinkle 6s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.2; transform: scale(1);}
+    50% { opacity: 1; transform: scale(1.5);}
+} */ 
+
+
+  header{
+    text-align: center;
+    color: var(--accent);
+    margin: 0;
+    padding: 0;
+    margin-bottom: 18px;
+    position: relative;
+    width: 100%;
+  }
+
+  header .bienvenue{
+    background-color: #a7a7a7;
+    margin: 0;
+    margin-top: 0;
+    padding: 18px 0;
+    margin-left: 0;
+    margin-right: 0;
+    color: #0A0F2D;
+    font-size: 2rem;
+    font-weight: bold;
+    z-index: 10px;
+  }
+
+  header h1{ 
+    margin:0; 
+    font-size:40px; 
+    font-family: "PT Sans Narrow", sans-serif;
+    font-weight: bold;
+    letter-spacing:0.6px;
+  }
+  header .subtitle{ 
+    font-size:14px; 
+    color:var(--muted); 
+    margin-top:6px; 
+    letter-spacing: 5px;
+  }
+
+  /* Cadre Luxe Mariage */
+.photo-frame {
+  width: 260px;
+  margin: 25px auto;
+  padding: 10px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #0A0F2D, #1C2856); /* Bleu nuit */
+  border: 3px solid #C0C0C0; /* Argent */
+  box-shadow: 0 0 40px rgba(192,192,192,0.35);
+  position: relative;
+  animation: framePulse 4s infinite alternate;
+}
+
+.photo-frame img {
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+@keyframes framePulse {
+  from { box-shadow: 0 0 20px rgba(192,192,192,0.2); }
+  to { box-shadow: 0 0 50px rgba(192,192,192,0.55); }
+}
+
+
+  /* Festons / fleurs (simple decorative bar) */
+  .festons{
+    height:60px;
+    background:
+      radial-gradient(circle at 10% 40%, rgba(255,255,255,0.03) 0 8%, transparent 9%),
+      radial-gradient(circle at 30% 60%, rgba(255,255,255,0.02) 0 8%, transparent 9%),
+      linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+    border-radius:12px;
+    margin-bottom:18px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+    position:relative;
+  }
+  .festons::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="140" height="60"><g fill="%23b0c5d6" fill-opacity="0.06"><path d="M10 40 C20 10,40 10,50 40" /><path d="M40 40 C52 8,72 8,84 40" transform="translate(30,0)"/></g></svg>');
+    background-repeat:repeat-x;
+    opacity:0.9;
+    mix-blend-mode:overlay;
+  }
+
+  .container{
+    display:grid;
+    grid-template-columns: 1fr 360px;
+    gap:18px;
+    align-items:start;
+  }
+
+  /* principale */
+  .main-col{
+    min-width:0;
+  }
+  .card{
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    border:1px solid rgba(159,182,200,0.06);
+  }
+
+  /* stats globales */
+  .stats-global{
+    display:flex;
+    gap:12px;
+    justify-content:space-between;
+    align-items:center;
+    color:var(--accent);
+    font-weight:600;
+    font-size:15px;
+    flex-wrap:wrap;
+  }
+  .stats-global .numbers{ color:var(--muted); font-weight:700; margin-left:6px; }
+
+  /* search / controls */
+  .controls{ display:flex; gap:8px; margin-top:12px; align-items:center; flex-wrap:wrap; }
+  .controls input[type="search"]{
+    padding:8px 10px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,0.06);
+    background:var(--glass);
+    color:var(--muted);
+    outline:none;
+    min-width:200px;
+  }
+  .controls button{
+    background:linear-gradient(180deg,#1b3a57,#0f2740);
+    color:var(--accent);
+    border:1px solid rgba(255,255,255,0.04);
+    padding:8px 10px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:600;
+  }
+
+  /* table blocks */
+  .table-block{
+    margin-top:12px;
+  }
+  .table-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    margin-bottom:8px;
+    color:var(--accent);
+  }
+  .table-title h3{ margin:0; font-size:16px; color:var(--accent) }
+  .table-meta{ color:var(--muted); font-size:13px }
+
+  .guest-list{ display:grid; gap:6px; margin-top:8px; }
+  .guest{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px;
+    border-radius:10px;
+    background: rgba(255,255,255,0.01);
+    border:1px solid rgba(255,255,255,0.02);
+    transition: transform .12s ease, box-shadow .12s ease, background .12s;
+  }
+  .guest:hover{ transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,0.45) }
+  .guest .name{ font-weight:600; color:var(--muted) }
+  .guest .meta{ font-size:13px; color:#98b0c4 }
+
+  /* icons */
+  .icon-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:36px;height:36px;border-radius:10px;
+    background:linear-gradient(180deg,#0d2a42,#062034);
+    color:var(--accent);
+    border:1px solid rgba(255,255,255,0.03);
+    cursor:pointer;
+    font-size:18px;
+    transition: transform .18s ease, background .12s;
+  }
+  .icon-btn:active{ transform:scale(0.96) }
+  .check{
+    color:#2f4860;
+    font-size:20px;
+    border-radius:8px;
+    padding:6px;
+    cursor:pointer;
+  }
+  .check.validated{
+    color:var(--success);
+    transform:scale(1.12);
+    text-shadow:0 6px 18px rgba(60,200,130,0.12);
+    cursor:default;
+  }
+
+  /* right column (panel) */
+  .side{
+    position:sticky;
+    top:20px;
+  }
+
+  .panel .panel-row{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; }
+  .panel .qr{ display:flex; align-items:center; gap:8px; }
+  .small-muted{ font-size:13px; color:#9fb6c8; }
+
+  /* confirmation modal (simple) */
+  .modal{
+    position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
+    background:rgba(3,6,10,0.6); z-index:40; display:none;
+  }
+  .modal .box{
+    background: #071229; color:var(--muted);
+    border-radius:12px; padding:18px; width:min(420px,94%);
+    border:1px solid rgba(255,255,255,0.04);
+  }
+  .modal .actions{ display:flex; gap:8px; justify-content:flex-end; margin-top:12px; }
+
+  /* responsive */
+  @media (max-width:980px){
+    .container{ grid-template-columns: 1fr; }
+    .side{ position:relative; top:auto; }
+  }
+
+  /* Coeurs en fond animé */
+.hearts-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1; /* Derrière le contenu */
+}
+
+.hearts-bg::before,
+.hearts-bg::after {
+  content: "💕";
+  position: absolute;
+  font-size: 45px;
+  opacity: 0.15;
+  animation: floatHearts 18s linear infinite;
+}
+
+.hearts-bg::after {
+  left: 70%;
+  animation-delay: 8s;
+}
+
+@keyframes floatHearts {
+  0%   { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  20%  { opacity: 0.25; }
+  80%  { opacity: 0.25; }
+  100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}
+
