@@ -1,5 +1,6 @@
 
 
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Audiowide&family=Bebas+Neue&family=Bitcount+Prop+Single:wght@100..900&family=Eater&family=Exo+2:ital,wght@0,100..900;1,100..900&family=Germania+One&family=League+Spartan:wght@100..900&family=Mogra&family=Orbitron:wght@400..900&family=PT+Sans+Narrow:wght@400;700&family=Pacifico&family=Pirata+One&family=Poppins:ital,wght@0,100;0,400;0,700;1,500&family=Roboto:ital,wght@0,100..900;1,100..900&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap');
 
   :root{
@@ -10,7 +11,11 @@
     --success: #3dd07b;
     --glass: rgba(255,255,255,0.04);
   }
-  *{box-sizing:border-box}
+  *{
+    box-sizing:border-box;
+    padding: 0;
+    margin: 0;
+  }
   body{
     margin:0;
     font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -18,75 +23,102 @@
     color: var(--muted);
     padding:0;
   }
-   /* body {
-    background: linear-gradient(to bottom, #3B1C54, #2B0F3A);
-    /* color: #F4E3D7; /* Or rosé clair pour le texte */
-    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow-x: hidden;
-    position: relative; */
-/* } */ 
-/* 
-.stars-bg {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0; left: 0;
-    z-index: -2;
-    background: transparent;
-}
-
-.star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: #FFD7A0;
-    border-radius: 50%;
-    animation: twinkle 6s infinite ease-in-out;
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 0.2; transform: scale(1);}
-    50% { opacity: 1; transform: scale(1.5);}
-} */ 
 
 
-  header{
+  /* header{
     text-align: center;
     color: var(--accent);
     margin: 0;
     padding: 0;
-    margin-bottom: 18px;
     position: relative;
     width: 100%;
-  }
-
-  header .bienvenue{
-    background-color: #a7a7a7;
+  }  */
+  /* .new{
+    background: url(images/Wedding\ Photography\ Style\ Guide.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+  } */
+  .other-new{
+    text-align: center;
+    padding: 10px;
+    /* padding: 0; */
     margin: 0;
-    margin-top: 0;
-    padding: 18px 0;
-    margin-left: 0;
-    margin-right: 0;
-    color: #0A0F2D;
-    font-size: 2rem;
-    font-weight: bold;
-    z-index: 10px;
+    background-color: transparent;
+    backdrop-filter: blur(20px);
   }
+/* Nouveau HEADER remplacé */
+header {
+  margin: 0;
+  width: 100%;
+  height: auto;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),  url('images/wedding.jfif');
+  background-position: center;
+  background-size: auto ;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+header h1 {
+font-size: 42px;
+color: #ffc107;
+margin-bottom: 10px;
+}
 
-  header h1{ 
-    margin:0; 
-    font-size:40px; 
-    font-family: "PT Sans Narrow", sans-serif;
-    font-weight: bold;
-    letter-spacing:0.6px;
-  }
-  header .subtitle{ 
-    font-size:14px; 
-    color:var(--muted); 
-    margin-top:6px; 
-    letter-spacing: 5px;
-  }
+.mariage{
+  font-size: 1.8rem;
+  padding: 0;
+  margin: 0;
+  color: #d4d6d8;
+}
+header h2 {
+font-size: 60px;
+margin-bottom: 20px;
+font-family: 'Great vibes', sans-serif;
+color: #fff;
+}
 
+.time-box span {
+display: block;
+font-size: 10px;
+color: #111;
+opacity: 0.8;
+}
+div .time-box{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background-color: #f00ac9;
+  display:flex;
+  flex-direction:column;
+  font-size: 18px;
+  align-items:center;
+  justify-content:center;
+  flex-shrink: 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  transform: translateY(0);
+  transition: transform .25s ease;
+  cursor:default;
+}
+
+.time-box:hover{
+  transform: translateY(-6px) scale(1.02);
+}
+.countdown {
+display: flex;
+gap: 10px;
+margin-top: 20px;
+font-size: 22px;
+color: #111;
+font-weight: bold;
+justify-content: center;
+flex-wrap: wrap;
+}
   /* Cadre Luxe Mariage */
 .photo-frame {
   width: 260px;
@@ -120,7 +152,8 @@
       radial-gradient(circle at 30% 60%, rgba(255,255,255,0.02) 0 8%, transparent 9%),
       linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
     border-radius:12px;
-    margin-bottom:18px;
+    margin-bottom:0 !important;
+    margin-top: 0 !important;
     box-shadow: 0 6px 20px rgba(0,0,0,0.35);
     position:relative;
   }
@@ -252,9 +285,16 @@
     top:20px;
   }
 
-  .panel .panel-row{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:10px; }
-  .panel .qr{ display:flex; align-items:center; gap:8px; }
-  .small-muted{ font-size:13px; color:#9fb6c8; }
+  .panel .panel-row{ 
+    display:flex; 
+    justify-content:space-between;
+    align-items:center;
+    gap:8px; 
+    margin-bottom:10px;
+    color: #fff;
+   }
+  .panel .qr{ display:flex; align-items:center; gap:8px;color: }
+  .small-muted{ font-size:13px; color:#abacac; }
 
   /* confirmation modal (simple) */
   .modal{
@@ -272,7 +312,14 @@
   @media (max-width:980px){
     .container{ grid-template-columns: 1fr; }
     .side{ position:relative; top:auto; }
+    /* .time-box{
+      width: 50px;
+      height: 50px;
+      font-size: 10px;
+      gap: 5px;
+    } */
   }
+
 
   /* Coeurs en fond animé */
 .hearts-bg {

@@ -18,19 +18,22 @@
 
 </head>
 <body>
+  <header>
+    <h1>Bienvenu(e) !</h1>
+    <p class="mariage">Au mariage</p>
+    <h2><strong>Richman & Chacha</strong></h2>
+    <p>Date : <strong>10 janvier 2026</strong></p>
 
-<header>
-    <p class="bienvenue">Bienvenu(e)!</p>
-    <p class="msg">Au mariage de</p>
-  <h1>Richman &amp; Charlène</h1>
-  <div class="subtitle small-muted">20 / 12 / 2025</div>
+    <div class="countdown" id="countdown">
+    <div class="time-box"><div id="days">00</div><span>Jours</span></div>
+    <div class="time-box"><div id="hours">00</div><span>Heures</span></div>
+    <div class="time-box"><div id="minutes">00</div><span>Minutes</span></div>
+    <div class="time-box"><div id="seconds">00</div><span>Secondes</span></div>
+  </div>
 </header>
-
-<div class="photo-frame">
-    <img src="images/nous.JPG" alt="Les mariés">
-</div>
-
-
+<!-- <div class="photo-frame">
+    <img src="images/wedding.jfif" alt="Les mariés">
+</div> -->
 <div class="festons"></div>
 
 <div class="container">
@@ -104,6 +107,7 @@
           </div>
           <div class="guest-list">
             <div class="guest" data-id="t4_richman"><div class="name">Richman</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest couple" data-id="t4_couple_fatshi"><div class="name">Couple Mpoto</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
             <div class="guest" data-id="t4_dan"><div class="name">Dan Mpanzu</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
             <div class="guest" data-id="t4_christian"><div class="name">Christian</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
             <div class="guest couple" data-id="t4_couple_fatshi"><div class="name">Couple Fatshi</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
@@ -188,6 +192,21 @@
             <div class="guest" data-id="t10_rose"><div class="name">Rose</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
           </div>
         </div>
+        
+        <!-- Table 11 -->
+         <div class="table-block card" data-table="table3">
+          <div class="table-title">
+            <h3>11 — Table Lushi</h3>
+            <div class="table-meta">Présents: <span class="table-present">0</span> / <span class="table-total">4</span> — <span class="table-pct">0%</span></div>
+          </div>
+          <div class="guest-list">
+            <div class="guest" data-id="t3_richman"><div class="name">Breezy</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t3_dan"><div class="name">King</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest" data-id="t3_christian"><div class="name">Diego</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+            <div class="guest couple" data-id="t3_couple_ngedi"><div class="name">Couple Ngedi</div><div class="meta"><i class="fa-solid fa-circle-check check"></i></div></div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -504,6 +523,27 @@ initQRCode();
 document.addEventListener('keydown', (e)=>{
   if(e.key === 'a') btnAdmin.click();
 });
+
+function countdown() {
+const target = new Date('2026-01-10T00:00:00').getTime();
+const now = new Date().getTime();
+const diff = target - now;
+
+
+const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+
+document.getElementById("days").textContent = days;
+document.getElementById("hours").textContent = hours;
+document.getElementById("minutes").textContent = minutes;
+document.getElementById("seconds").textContent = seconds;
+}
+
+
+setInterval(countdown, 1000);
 </script>
 
 <div class="hearts-bg"></div>
